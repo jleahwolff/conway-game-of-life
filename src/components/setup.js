@@ -1,6 +1,4 @@
 // import Make2DArray from "../components/make2DArray.js";
-import React from 'react';
-
 
 function Make2DArray(column, row) {
 	let arr = new Array(column);
@@ -15,14 +13,15 @@ let column = 25;
 let row = 25;
 
 function Setup() {
-
   grid = Make2DArray(column, row);
   for (let i = 0; i < column; i++){
     for (let j = 0; j < row; j++){
       grid[i][j] = Math.floor(Math.random(2))
     }
   }
-  return grid
+  console.log("The grid", grid);
+  console.table("table of grid", grid);
+  return grid;
 }
 
 export default Setup;
