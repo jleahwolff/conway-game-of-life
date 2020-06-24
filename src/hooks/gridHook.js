@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import produce from 'immer';
 
 
 const numRows = 25;
@@ -34,7 +35,11 @@ const GridHook = () => {
         rows.map((col, k) => 
         <div 
         onClick ={() => {
-          grid[i][k] = 
+          // Producde from immer, make an immutable change, and create new grid for us.
+          const newGrid = produce(grid, gridCopy => {
+            gridCopy[i][k] = 1;
+          })
+          setGrid(newGrid);
         }}
         key = {`${i} - ${k}`}
         style={{width: '20px', 
